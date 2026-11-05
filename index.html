@@ -428,7 +428,11 @@ select.rate option{background:var(--navy-2)}
 }
 @media (max-width:720px){
   body{font-size:16px}
-  .nav a{padding:8px 10px;font-size:14px}
+  .nav{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;min-width:0}
+  .nav::-webkit-scrollbar{display:none}
+  .nav a{padding:6px 7px;font-size:13px;white-space:nowrap}
+  .site-head .wrap{gap:8px}
+  .logo-word{font-size:20px}
   .logo-word{font-size:22px}
   .site-head .wrap{height:64px}
   .toolbar{flex-direction:column;align-items:stretch}
@@ -452,7 +456,7 @@ select.rate option{background:var(--navy-2)}
   body.has-player{--bar-h:150px}
 }
 @media (max-width:380px){
-  .nav a{padding:6px 7px;font-size:13.5px}
+  .nav a{padding:6px 6px;font-size:13px}
 }
 
 /* ---------- الأشرطة ---------- */
@@ -588,6 +592,65 @@ body.focusing .spine.mini-cs,.spine.mini-cs{opacity:1;filter:none;transform:none
 .key-play.down{background:linear-gradient(180deg,#C9A88C,#A98467)}
 .deck-note{font-size:12.5px;color:var(--text-3);margin:10px 2px 0}
 
+
+/* ---------- دردشات ---------- */
+.chats{padding:40px 0 110px}
+.chat-grid{display:grid;grid-template-columns:minmax(260px,320px) 1fr;gap:clamp(20px,3vw,40px);align-items:start}
+.chat-side{display:flex;flex-direction:column;gap:22px;min-width:0}
+.chat-new{display:flex;flex-direction:column;gap:10px}
+.chat-new label{font-size:14.5px;color:var(--text-2)}
+.chat-new input,.claim input{min-height:48px;border-radius:14px;border:0;background:rgba(244,241,236,.07);padding:8px 16px;color:var(--text)}
+.chat-new input:focus,.claim input:focus{outline:2px solid var(--amber);outline-offset:2px}
+.chat-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:8px 22px;border-radius:999px;border:0;background:var(--paper);color:var(--ink);font-weight:500;font-size:15px;transition:transform .3s var(--ease)}
+.chat-btn:hover{transform:translateY(-1px)}
+.chat-btn.soft{background:rgba(244,241,236,.08);color:var(--text)}
+.chat-btn svg{width:17px;height:17px}
+.chat-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+.list-h{font-size:14px;color:var(--text-3);font-weight:500;margin:0 0 8px}
+.chat-item{width:100%;display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:56px;padding:8px 14px;border-radius:16px;border:0;background:transparent;color:var(--text);text-align:right;transition:background .3s}
+.chat-item:hover{background:rgba(244,241,236,.05)}
+.chat-item[aria-current="true"]{background:rgba(169,132,103,.16)}
+.chat-item .nm{font-weight:500;font-size:15.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pill{flex:0 0 auto;font-size:12px;padding:3px 10px;border-radius:999px;background:rgba(244,241,236,.08);color:var(--text-2);white-space:nowrap}
+.pill.locked{background:rgba(169,132,103,.22);color:var(--text)}
+.chat-main{min-width:0;border-radius:24px;background:var(--navy-2);box-shadow:0 0 0 1px rgba(169,132,103,.12),0 40px 80px -40px rgba(0,0,0,.9);padding:clamp(18px,2.6vw,30px)}
+.chat-empty{padding:60px 20px;text-align:center;color:var(--text-2)}
+.chat-empty svg{width:12px;height:34px;color:var(--amber);margin-bottom:10px}
+.link-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:18px}
+.link-row code{flex:1 1 240px;min-width:0;direction:ltr;text-align:left;font-family:ui-monospace,Menlo,monospace;font-size:13px;padding:12px 14px;border-radius:12px;background:rgba(0,0,0,.25);color:var(--text-2);overflow-x:auto;white-space:nowrap}
+.roles{display:flex;flex-wrap:wrap;gap:6px;padding:4px;border-radius:999px;background:rgba(244,241,236,.05);margin-bottom:18px;width:fit-content;max-width:100%}
+.roles button{min-height:40px;padding:4px 14px;border-radius:999px;border:0;background:transparent;color:var(--text-2);font-size:14px}
+.roles button[aria-pressed="true"]{background:var(--paper);color:var(--ink);font-weight:500}
+.roles-cap{font-size:12.5px;color:var(--text-3);margin:-10px 4px 16px}
+.chat-paper{border-radius:18px;background:var(--paper) var(--texture);color:var(--ink);padding:clamp(16px,2.4vw,26px);min-height:360px;display:flex;flex-direction:column}
+.chat-status{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink-3);margin:0 0 14px}
+.chat-status svg{width:15px;height:15px;color:var(--brown)}
+.msgs{flex:1;display:flex;flex-direction:column;gap:10px;margin:0 0 16px;padding:0;list-style:none;max-height:420px;overflow-y:auto}
+.msg{max-width:78%;padding:10px 16px;border-radius:18px;font-size:16px;line-height:1.8;align-self:flex-end;background:#E4DCCF;color:var(--ink);border-end-start-radius:6px}
+.msg.mine{align-self:flex-start;background:var(--navy-3);color:var(--paper);border-end-start-radius:18px;border-end-end-radius:6px}
+.msg small{display:block;font-size:11.5px;opacity:.65;margin-top:2px}
+.msgs .hint{align-self:center;font-size:13.5px;color:var(--ink-3);text-align:center;max-width:30em;padding:20px 0}
+.composer{display:flex;gap:10px;align-items:flex-end}
+.composer textarea{flex:1;min-width:0;min-height:52px;max-height:160px;resize:none;border:0;border-radius:18px;background:rgba(15,22,38,.05);padding:13px 16px;font-size:16px;line-height:1.6;color:var(--ink)}
+.composer textarea:focus{outline:none;box-shadow:0 0 0 2px rgba(169,132,103,.6);background:rgba(255,255,255,.7)}
+.composer .chat-btn{background:var(--ink);color:var(--paper);width:52px;padding:0;flex:0 0 auto}
+.claim{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:30px 10px;margin:auto}
+.claim .seal{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--brown);color:var(--amber);box-shadow:0 14px 30px -14px rgba(0,0,0,.6)}
+.claim .seal svg{width:12px;height:32px}
+.claim h3{font-size:22px;margin:4px 0 0}
+.claim p{margin:0;color:var(--ink-2);max-width:28em;font-size:15.5px}
+.claim form{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;width:100%;max-width:400px;margin-top:6px}
+.claim input{flex:1 1 200px;background:rgba(15,22,38,.06);color:var(--ink)}
+.claim input::placeholder{color:var(--ink-3)}
+.claim .chat-btn{background:var(--ink);color:var(--paper)}
+.claim .err{color:#9A2F22;font-size:13.5px;width:100%;min-height:1.4em;margin:0}
+.claim .sim{font-size:13px;color:var(--brown);background:rgba(169,132,103,.14);padding:8px 14px;border-radius:12px}
+.claim.denied .seal{background:#2A1C14}
+.chat-foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:16px;font-size:13px;color:var(--text-3)}
+.chat-foot .btn-text{color:var(--amber)}
+@media (max-width:860px){.chat-grid{grid-template-columns:1fr}}
+@media (max-width:720px){.msg{max-width:88%}.roles button{padding:4px 10px;font-size:13.5px}}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
 }
@@ -603,6 +666,7 @@ body.focusing .spine.mini-cs,.spine.mini-cs{opacity:1;filter:none;transform:none
       <a href="#top" data-nav>البداية</a>
       <a href="#library" data-nav>الحلقات</a>
       <a href="#books" data-nav>رف الكتب</a>
+      <a href="#chats" data-nav>دردشات</a>
       <a href="#about" data-nav>عن ألف</a>
     </nav>
   </div>
@@ -613,6 +677,7 @@ body.focusing .spine.mini-cs,.spine.mini-cs{opacity:1;filter:none;transform:none
   <section id="library" class="library" aria-labelledby="lib-title"></section>
   <section id="today" class="today dim-on-focus" aria-labelledby="daily-h"></section>
   <section id="books" class="books dim-on-focus" aria-labelledby="books-title"></section>
+  <section id="chats" class="chats dim-on-focus" aria-labelledby="chats-title"></section>
   <section id="about" class="about dim-on-focus" aria-labelledby="about-title"></section>
 </main>
 
@@ -1819,7 +1884,7 @@ audio.addEventListener('error', () => {
 /* =========================================================
    التنقل
    ========================================================= */
-const SECTIONS = ['top','library','today','books','about'];
+const SECTIONS = ['top','library','today','books','chats','about'];
 function goSection(id, smooth){
   const el = document.getElementById(id); if (!el) return;
   const go = () => {
@@ -1832,6 +1897,7 @@ function goSection(id, smooth){
 }
 
 function route(initial){
+  if (location.hash.startsWith('#chat-')){ openChatLink(location.hash.slice(6), initial); return; }
   let [name, id] = (location.hash.slice(1) || 'top').split('/');
   try { id = decodeURIComponent(id || ''); } catch(err){}
   if (name === 'episode'){
@@ -1866,6 +1932,195 @@ const head = $('#siteHeader');
 const onScroll = () => head.classList.toggle('scrolled', window.scrollY > 40);
 window.addEventListener('scroll', onScroll, { passive:true });
 
+/* =========================================================
+   دردشات — محاكاة: كل شيء محفوظ على هذا الجهاز فقط
+   ========================================================= */
+const CHAT_KEY = 'alef:chats';
+const CH = { sel:null, role:'owner', pending:null, missing:null, confirmDel:false };
+const ROLES = { owner:'أنا (المرسل)', a:'صديق أ', b:'صديق ب' };
+const loadChats = () => { try { const v = JSON.parse(store.get(CHAT_KEY) || '[]'); return Array.isArray(v) ? v : []; } catch(e){ return []; } };
+const saveChats = list => store.set(CHAT_KEY, JSON.stringify(list));
+const chatById = id => loadChats().find(c => c.id === id);
+const maskEmail = e => { const [u, d] = String(e).split('@'); return (u ? u[0] : '') + '•••@' + (d || ''); };
+const chatLink = id => (location.origin && location.origin !== 'null' ? location.origin : '') + location.pathname + '#chat-' + id;
+const newId = () => { const a = 'abcdefghijkmnpqrstuvwxyz23456789'; let s = ''; const r = (window.crypto && crypto.getRandomValues) ? crypto.getRandomValues(new Uint8Array(10)) : Array.from({length:10}, () => Math.random()*256|0); r.forEach(x => s += a[x % a.length]); return s; };
+const timeLabel = t => { try { return new Date(t).toLocaleTimeString('ar-u-nu-arab', { hour:'numeric', minute:'2-digit' }); } catch(e){ return ''; } };
+function updateChat(id, fn){ const list = loadChats(); const c = list.find(x => x.id === id); if (!c) return null; fn(c); saveChats(list); return c; }
+
+function renderChats(focusSel){
+  const list = loadChats().sort((a,b) => b.created - a.created);
+  const c = CH.sel ? list.find(x => x.id === CH.sel) : null;
+  if (CH.sel && !c && !CH.missing) CH.sel = null;
+  $('#chats').innerHTML = `
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="kicker">دردشات</p>
+          <h2 id="chats-title" tabindex="-1">رابط لشخص واحد</h2>
+          <p class="lede">افتح دردشة وأرسل رابطها لشخص واحد. أول من يفتحه تصبح الدردشة له وحده، مدى الحياة.</p>
+        </div>
+        <span class="demo-tag">محاكاة على هذا الجهاز فقط</span>
+      </div>
+      <div class="chat-grid">
+        <aside class="chat-side">
+          <form class="chat-new" id="chatNew" novalidate>
+            <label for="chatTo">لمن هذه الدردشة؟ الاسم يظهر لك فقط</label>
+            <input id="chatTo" type="text" maxlength="40" placeholder="مثلاً: صديقتي سارة" autocomplete="off">
+            <button class="chat-btn" type="submit">${svg('<path d="M12 5v14M5 12h14"/>')}أنشئ رابطاً</button>
+          </form>
+          ${list.length ? `<div><h3 class="list-h">دردشاتك</h3>
+          <ul class="chat-list">${list.map(x => `<li><button class="chat-item" type="button" data-chat="${esc(x.id)}" aria-current="${x.id === CH.sel}">
+            <span class="nm">${esc(x.to || 'دردشة بلا اسم')}</span>
+            <span class="pill${x.claimedBy ? ' locked' : ''}">${x.claimedBy ? 'مقفلة لشخص واحد' : 'بانتظار فتحها'}</span>
+          </button></li>`).join('')}</ul></div>` : ''}
+        </aside>
+        <div class="chat-main" id="chatMain">${chatMainHTML(c)}</div>
+      </div>
+    </div>`;
+  const ms = $('#chats .msgs'); if (ms) ms.scrollTop = ms.scrollHeight;
+  if (focusSel){ const f = $(focusSel, $('#chats')); if (f) f.focus({ preventScroll:true }); }
+}
+
+function chatMainHTML(c){
+  if (CH.missing) return `<div class="chat-empty">${alefSVG(false)}<p>هذا الرابط لدردشة غير موجودة على هذا الجهاز.<br>في المحاكاة تُحفظ الدردشات على الجهاز الذي أنشأها فقط.</p></div>`;
+  if (!c) return `<div class="chat-empty">${alefSVG(false)}<p>أنشئ أول دردشة لتجرب كيف يُقفل الرابط على شخص واحد.</p></div>`;
+  const link = chatLink(c.id);
+  const roleBtns = Object.keys(ROLES).map(r => `<button type="button" data-role="${r}" aria-pressed="${CH.role === r}">${ROLES[r]}</button>`).join('');
+  return `
+    <div class="link-row">
+      <code id="chatLinkText">${esc(link)}</code>
+      <button class="chat-btn soft" type="button" data-copy>${svg('<rect x="8" y="8" width="11" height="11" rx="2"/><path d="M5 15V6a1 1 0 0 1 1-1h9"/>')}نسخ الرابط</button>
+    </div>
+    <div class="roles" role="group" aria-label="جرّب المحاكاة من وجهة نظر">${roleBtns}</div>
+    <p class="roles-cap">بدّل بين الأشخاص لتشاهد ما يراه كل واحد عند فتح الرابط.</p>
+    <div class="chat-paper">${chatViewHTML(c)}</div>
+    <div class="chat-foot">
+      <span>أُنشئت ${esc(timeLabel(c.created))}</span>
+      <button class="btn-text" type="button" data-del>${CH.confirmDel ? 'اضغط مرة ثانية لحذف الدردشة نهائياً' : 'حذف الدردشة'}</button>
+    </div>`;
+}
+
+function chatViewHTML(c){
+  const viewer = CH.role;
+  if (viewer !== 'owner'){
+    if (!c.claimedBy){
+      const p = CH.pending && CH.pending.role === viewer && CH.pending.id === c.id ? CH.pending : null;
+      return `<div class="claim">
+        <span class="seal">${alefSVG(false)}</span>
+        <h3>دعوة لشخص واحد</h3>
+        <p>${esc(c.to ? 'أرسلها لك صاحبها.' : 'وصلك رابط دردشة خاصة.')} بفتحك لها تصبح لك وحدك مدى الحياة، ولن يستطيع أحد غيرك فتحها.</p>
+        ${p ? `
+          <p class="sim">في المحاكاة يظهر الرمز هنا. في الموقع الحقيقي يصل إلى بريدك: <b dir="ltr">${p.code}</b></p>
+          <form id="claimCode" novalidate>
+            <label class="sr-only" for="claimCodeIn">رمز التحقق</label>
+            <input id="claimCodeIn" inputmode="numeric" maxlength="4" placeholder="رمز من ٤ أرقام" dir="ltr" autocomplete="one-time-code">
+            <button class="chat-btn" type="submit">تأكيد</button>
+            <p class="err" id="claimErr" aria-live="polite"></p>
+          </form>` : `
+          <form id="claimEmail" novalidate>
+            <label class="sr-only" for="claimEmailIn">بريدك الإلكتروني</label>
+            <input id="claimEmailIn" type="email" placeholder="name@example.com" dir="ltr" autocomplete="email">
+            <button class="chat-btn" type="submit">افتح الدردشة</button>
+            <p class="err" id="claimErr" aria-live="polite"></p>
+          </form>`}
+      </div>`;
+    }
+    if (c.claimedRole !== viewer){
+      return `<div class="claim denied">
+        <span class="seal">${svg('<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>')}</span>
+        <h3>هذه الدردشة تخص شخصاً آخر</h3>
+        <p>فُتح هذا الرابط من قبل، وأصبح لصاحبه وحده. لا يمكن قراءة أي شيء منها.</p>
+      </div>`;
+    }
+  }
+  const me = viewer === 'owner' ? 'owner' : 'guest';
+  const status = c.claimedBy
+    ? `${svg('<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>')}${viewer === 'owner' ? `مقفلة على ${esc(maskEmail(c.claimedBy))}` : 'هذه الدردشة لك وحدك'}`
+    : `${svg('<circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/>')}لم يفتح أحد الرابط بعد. رسائلك تنتظره هنا`;
+  const msgs = c.messages.length
+    ? c.messages.map(m => `<li class="msg${m.from === me ? ' mine' : ''}">${esc(m.text)}<small>${esc(timeLabel(m.at))}</small></li>`).join('')
+    : `<li class="hint">${viewer === 'owner' ? 'اكتب أول رسالة. سيقرؤها الشخص الوحيد الذي يفتح الرابط.' : 'لا رسائل بعد. اكتب ما تحب.'}</li>`;
+  return `
+    <p class="chat-status">${status}</p>
+    <ul class="msgs" aria-live="polite" aria-label="الرسائل">${msgs}</ul>
+    <form class="composer" id="chatSend" novalidate>
+      <label class="sr-only" for="chatMsg">رسالتك</label>
+      <textarea id="chatMsg" rows="1" maxlength="1000" placeholder="اكتب رسالة…"></textarea>
+      <button class="chat-btn" type="submit" aria-label="إرسال">${svg('<path d="M20 4L9 13M20 4l-6 16-3-7-7-3z"/>')}</button>
+    </form>`;
+}
+
+function openChatLink(id, initial){
+  CH.missing = chatById(id) ? null : id;
+  CH.sel = id; CH.role = 'a'; CH.pending = null; CH.confirmDel = false;
+  renderChats();
+  if (stageOpen) closeEpisode();
+  setTimeout(() => goSection('chats', !initial), initial ? 60 : 0);
+}
+
+$('#chats').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = e.target;
+  if (f.id === 'chatNew'){
+    const to = $('#chatTo').value.trim();
+    const list = loadChats();
+    const c = { id:newId(), to, created:Date.now(), claimedBy:null, claimedRole:null, messages:[] };
+    list.push(c);
+    if (!saveChats(list)){ toast('تعذّر الحفظ في هذا المتصفح.'); return; }
+    CH.sel = c.id; CH.role = 'owner'; CH.pending = null; CH.missing = null; CH.confirmDel = false;
+    renderChats('#chatMsg');
+    toast('الرابط جاهز. انسخه وأرسله لشخص واحد.');
+  }
+  else if (f.id === 'claimEmail'){
+    const v = $('#claimEmailIn').value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){ $('#claimErr').textContent = 'اكتب بريداً إلكترونياً صحيحاً، مثل name@example.com'; $('#claimEmailIn').focus(); return; }
+    CH.pending = { id:CH.sel, role:CH.role, email:v, code:String(1000 + Math.floor(Math.random()*9000)) };
+    renderChats('#claimCodeIn');
+  }
+  else if (f.id === 'claimCode'){
+    const v = $('#claimCodeIn').value.trim().replace(/[٠-٩]/g, d => AR.indexOf(d));
+    if (!CH.pending || v !== CH.pending.code){ $('#claimErr').textContent = 'الرمز غير صحيح. انسخه كما يظهر فوق.'; $('#claimCodeIn').select(); return; }
+    const c = chatById(CH.sel);
+    if (c && c.claimedBy){ CH.pending = null; renderChats(); toast('سبقك شخص آخر وفتح الرابط.'); return; }
+    updateChat(CH.sel, x => { x.claimedBy = CH.pending.email; x.claimedRole = CH.pending.role; });
+    CH.pending = null;
+    renderChats('#chatMsg');
+    toast('صارت الدردشة لك وحدك.');
+  }
+  else if (f.id === 'chatSend'){
+    const ta = $('#chatMsg'); const text = ta.value.trim();
+    if (!text){ ta.focus(); return; }
+    const from = CH.role === 'owner' ? 'owner' : 'guest';
+    updateChat(CH.sel, x => x.messages.push({ from, text, at:Date.now() }));
+    renderChats('#chatMsg');
+  }
+});
+$('#chats').addEventListener('keydown', e => {
+  if (e.target.id === 'chatMsg' && e.key === 'Enter' && !e.shiftKey && !e.isComposing){ e.preventDefault(); $('#chatSend').requestSubmit ? $('#chatSend').requestSubmit() : $('#chatSend').dispatchEvent(new Event('submit', { cancelable:true, bubbles:true })); }
+});
+$('#chats').addEventListener('input', e => {
+  if (e.target.id === 'chatMsg'){ const t = e.target; t.style.height = 'auto'; t.style.height = Math.min(160, t.scrollHeight) + 'px'; }
+  if (e.target.id === 'claimEmailIn' || e.target.id === 'claimCodeIn'){ const er = $('#claimErr'); if (er) er.textContent = ''; }
+});
+$('#chats').addEventListener('click', e => {
+  const item = e.target.closest('[data-chat]');
+  if (item){ CH.sel = item.dataset.chat; CH.role = 'owner'; CH.pending = null; CH.missing = null; CH.confirmDel = false; renderChats(`[data-chat="${CH.sel}"]`); return; }
+  const role = e.target.closest('[data-role]');
+  if (role){ CH.role = role.dataset.role; CH.confirmDel = false; renderChats(`[data-role="${CH.role}"]`); return; }
+  if (e.target.closest('[data-copy]')){
+    const txt = chatLink(CH.sel);
+    const fallback = () => { const r = document.createRange(); r.selectNodeContents($('#chatLinkText')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast('حدّدت الرابط. انسخه يدوياً.'); };
+    try { navigator.clipboard.writeText(txt).then(() => toast('نُسخ الرابط.'), fallback); } catch(err){ fallback(); }
+    return;
+  }
+  if (e.target.closest('[data-del]')){
+    if (!CH.confirmDel){ CH.confirmDel = true; renderChats('[data-del]'); return; }
+    saveChats(loadChats().filter(x => x.id !== CH.sel));
+    CH.sel = null; CH.confirmDel = false; CH.pending = null;
+    renderChats('#chatTo'); toast('حُذفت الدردشة.');
+  }
+});
+
 /* ---------- البدء ---------- */
 renderScene();
 renderLibraryShell();
@@ -1873,6 +2128,7 @@ renderResults();
 renderToday();
 renderBooks();
 renderAbout();
+renderChats();
 setVol(100);
 onScroll();
 watchSections();
